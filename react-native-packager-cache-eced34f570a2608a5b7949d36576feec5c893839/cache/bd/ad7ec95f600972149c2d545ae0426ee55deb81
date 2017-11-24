@@ -25,11 +25,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _components = {
-  Greeting: {
-    displayName: 'Greeting'
+  Blink: {
+    displayName: 'Blink'
   },
-  LotsOfGreetings: {
-    displayName: 'LotsOfGreetings'
+  BlinkApp: {
+    displayName: 'BlinkApp'
   }
 };
 
@@ -46,75 +46,89 @@ function _wrapComponent(id) {
   };
 }
 
-var Greeting = _wrapComponent('Greeting')(function (_Component) {
-  _inherits(Greeting, _Component);
+var Blink = _wrapComponent('Blink')(function (_Component) {
+  _inherits(Blink, _Component);
 
-  function Greeting() {
-    _classCallCheck(this, Greeting);
+  function Blink(props) {
+    _classCallCheck(this, Blink);
 
-    return _possibleConstructorReturn(this, (Greeting.__proto__ || Object.getPrototypeOf(Greeting)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Blink.__proto__ || Object.getPrototypeOf(Blink)).call(this, props));
+
+    _this.state = { showText: true };
+
+    setInterval(function () {
+      _this.setState(function (previousState) {
+        return { showText: !previousState.showText };
+      });
+    }, 1000);
+    return _this;
   }
 
-  _createClass(Greeting, [{
+  _createClass(Blink, [{
     key: 'render',
     value: function render() {
+      var display = this.state.showText ? this.props.text : '';
       return _react3.default.createElement(
         _reactNative.Text,
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 7
+            lineNumber: 20
           }
         },
-        ' Hello ',
-        this.props.name,
-        ' !'
+        display
       );
     }
   }]);
 
-  return Greeting;
+  return Blink;
 }(_react2.Component));
 
-var LotsOfGreetings = _wrapComponent('LotsOfGreetings')(function (_Component2) {
-  _inherits(LotsOfGreetings, _Component2);
+var BlinkApp = _wrapComponent('BlinkApp')(function (_Component2) {
+  _inherits(BlinkApp, _Component2);
 
-  function LotsOfGreetings() {
-    _classCallCheck(this, LotsOfGreetings);
+  function BlinkApp() {
+    _classCallCheck(this, BlinkApp);
 
-    return _possibleConstructorReturn(this, (LotsOfGreetings.__proto__ || Object.getPrototypeOf(LotsOfGreetings)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (BlinkApp.__proto__ || Object.getPrototypeOf(BlinkApp)).apply(this, arguments));
   }
 
-  _createClass(LotsOfGreetings, [{
+  _createClass(BlinkApp, [{
     key: 'render',
     value: function render() {
       return _react3.default.createElement(
         _reactNative.View,
-        { style: { alignItems: 'center' }, __source: {
+        {
+          __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 28
           }
         },
-        _react3.default.createElement(Greeting, { name: 'Rexxar', __source: {
+        _react3.default.createElement(Blink, { text: 'I love to blink', __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 29
           }
         }),
-        _react3.default.createElement(Greeting, { name: 'Jaina', __source: {
+        _react3.default.createElement(Blink, { text: 'Yes blinking is so great', __source: {
             fileName: _jsxFileName,
-            lineNumber: 16
+            lineNumber: 30
           }
         }),
-        _react3.default.createElement(Greeting, { name: 'Valeera', __source: {
+        _react3.default.createElement(Blink, { text: 'Why did they ever take this out of HTML', __source: {
             fileName: _jsxFileName,
-            lineNumber: 17
+            lineNumber: 31
+          }
+        }),
+        _react3.default.createElement(Blink, { text: 'Look at me look at me look at me', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 32
           }
         })
       );
     }
   }]);
 
-  return LotsOfGreetings;
+  return BlinkApp;
 }(_react2.Component));
 
-exports.default = LotsOfGreetings;
+exports.default = BlinkApp;
