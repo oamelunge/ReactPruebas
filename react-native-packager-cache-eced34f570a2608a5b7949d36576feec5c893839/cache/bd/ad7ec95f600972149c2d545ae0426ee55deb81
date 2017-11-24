@@ -25,8 +25,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _components = {
-  Bananas: {
-    displayName: 'Bananas'
+  Greeting: {
+    displayName: 'Greeting'
+  },
+  LotsOfGreetings: {
+    displayName: 'LotsOfGreetings'
   }
 };
 
@@ -43,31 +46,75 @@ function _wrapComponent(id) {
   };
 }
 
-var Bananas = _wrapComponent('Bananas')(function (_Component) {
-  _inherits(Bananas, _Component);
+var Greeting = _wrapComponent('Greeting')(function (_Component) {
+  _inherits(Greeting, _Component);
 
-  function Bananas() {
-    _classCallCheck(this, Bananas);
+  function Greeting() {
+    _classCallCheck(this, Greeting);
 
-    return _possibleConstructorReturn(this, (Bananas.__proto__ || Object.getPrototypeOf(Bananas)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Greeting.__proto__ || Object.getPrototypeOf(Greeting)).apply(this, arguments));
   }
 
-  _createClass(Bananas, [{
+  _createClass(Greeting, [{
     key: 'render',
     value: function render() {
-      var pic = {
-        uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-      };
-
-      return _react3.default.createElement(_reactNative.Image, { source: pic, style: { width: 193, height: 110 }, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11
-        }
-      });
+      return _react3.default.createElement(
+        _reactNative.Text,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 7
+          }
+        },
+        ' Hello ',
+        this.props.name,
+        ' !'
+      );
     }
   }]);
 
-  return Bananas;
+  return Greeting;
 }(_react2.Component));
 
-exports.default = Bananas;
+var LotsOfGreetings = _wrapComponent('LotsOfGreetings')(function (_Component2) {
+  _inherits(LotsOfGreetings, _Component2);
+
+  function LotsOfGreetings() {
+    _classCallCheck(this, LotsOfGreetings);
+
+    return _possibleConstructorReturn(this, (LotsOfGreetings.__proto__ || Object.getPrototypeOf(LotsOfGreetings)).apply(this, arguments));
+  }
+
+  _createClass(LotsOfGreetings, [{
+    key: 'render',
+    value: function render() {
+      return _react3.default.createElement(
+        _reactNative.View,
+        { style: { alignItems: 'center' }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 14
+          }
+        },
+        _react3.default.createElement(Greeting, { name: 'Rexxar', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 15
+          }
+        }),
+        _react3.default.createElement(Greeting, { name: 'Jaina', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 16
+          }
+        }),
+        _react3.default.createElement(Greeting, { name: 'Valeera', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17
+          }
+        })
+      );
+    }
+  }]);
+
+  return LotsOfGreetings;
+}(_react2.Component));
+
+exports.default = LotsOfGreetings;
